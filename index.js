@@ -1,7 +1,7 @@
-import createWorker from './worker';
+import createWorker from './worker.js';
 
-export default function (code) {
-  const worker = createWorker(code);
+export default function (code, context) {
+  const worker = createWorker(code, context);
 
   return (req, res, next) => {
     const data = [];
@@ -14,7 +14,7 @@ export default function (code) {
 
     req.on('end', async () => {
       try {
-        const url = new URL(req.originalUrl, [req.protocol, req.get('host')].join('://'));
+        const url = new URL(req.originalUrl || req.url, [req.protocol || 'http', req.headers.host].join('://'));
         const response = await worker.dispatchFetch(url, {
           headers: req.headers,
           method: req.method,
@@ -25,8 +25,11 @@ export default function (code) {
         const arrayBuffer = await response.arrayBuffer();
         res.end(Buffer.from(arrayBuffer), 'binary');
       } catch (error) {
-        next(error);
+        if (next instanceof Function) {
+          return next(error);
+        }
+        throw error;
       }
     });
-  }
+  };
 }

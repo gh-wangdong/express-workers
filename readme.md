@@ -1,11 +1,11 @@
-# express-worker
+# express-workers
 
 基于 express 的 worker 服务中间件
 
 ## 使用方法
 
 ```javascript
-import middleware from '@wang-dong/express-worker';
+import middleware from 'express-workers';
 ...
 app.use(middleware(code, { echo: console.log }));
 ```

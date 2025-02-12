@@ -1,5 +1,5 @@
 {
-  "name": "@wang-dong/express-worker",
+  "name": "express-workers",
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
@@ -8,11 +8,11 @@
     "email": "wangdong.wuhan@hotmail.com"
   },
   "bugs": {
-    "url": "https://github.com/gh-wangdong/express-worker/issues"
+    "url": "https://github.com/gh-wangdong/express-workers/issues"
   },
-  "homepage": "https://github.com/gh-wangdong/express-worker",
+  "homepage": "https://github.com/gh-wangdong/express-workers",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gh-wangdong/express-worker.git"
+    "url": "git+https://github.com/gh-wangdong/express-workers.git"
   }
 }

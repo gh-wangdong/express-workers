@@ -1,6 +1,8 @@
 import createWorker from './worker';
 
 export default function (code) {
+  const worker = createWorker(code);
+
   return (req, res, next) => {
     const data = [];
     let size = 0;
@@ -12,7 +14,6 @@ export default function (code) {
 
     req.on('end', async () => {
       try {
-        const worker = createWorker(code);
         const url = new URL(req.originalUrl, [req.protocol, req.get('host')].join('://'));
         const response = await worker.dispatchFetch(url, {
           headers: req.headers,

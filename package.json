@@ -1,6 +1,7 @@
 {
   "name": "express-workers",
   "version": "0.0.1",
+  "keywords": ["worker", "workders", "express"],
   "type": "module",
   "license": "MIT",
   "author": {
